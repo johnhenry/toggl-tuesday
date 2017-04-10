@@ -1,0 +1,24 @@
+{
+  "name": "toggl-tuesday",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "toggl-tuesday" : "lib/index.js"
+  },
+  "cmd":"node index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.18.1",
+    "node-fetch": "^1.6.3",
+    "prettyjson": "^1.2.1",
+    "string.prototype.padstart": "^3.0.0",
+    "yargs": "^7.0.2"
+  }
+}
