@@ -12,7 +12,7 @@ const getRecords = require("./lib/getRecords.js")
 
 const main = async(input)=>{
   try{
-    const {test, apiToken, username, password, weekend, verbose, silent, record} = input;
+    const {test, apiToken, username, password, weekend, verbose, silent, record, yes} = input;
 
     //Nullify console output console if "silent" flag is passed
     if(silent){
@@ -61,14 +61,16 @@ OR use the --help flag for more options`);
     }
 
     //Ensure user wants to attemt to make changes
-    await new Promise((resolve, reject)=>{
-      rl.question("Make these updates? (Y/n)", (answer)=>{
-        if(answer && answer[0].toLowerCase() !== "y"){
-          return reject(new Error("aborted"));
-        }
-        return resolve();
-      })
-    });
+    if(!yes){
+      await new Promise((resolve, reject)=>{
+        rl.question("Make these updates? (Y/n)", (answer)=>{
+          if(answer && answer[0].toLowerCase() !== "y"){
+            return reject(new Error("aborted"));
+          }
+          return resolve();
+        })
+      });
+    }
     rl.close();
     console.log("updating entries...")
     //Send requests
@@ -102,7 +104,8 @@ main(yargs
       describe: `Preview changes.`,
       type: "boolean"
     })
-    .option("apiToken", {
+    .option("a", {
+      alias: "apiToken",
       describe:  `API Token from ${URL.API}`,
       type: "string"
     })
@@ -111,7 +114,6 @@ main(yargs
       type: "string"
     })
     .option("password", {
-      // alias: "password",
       describe:  `Your Toggl Password`,
       type: "string"
     })
@@ -132,42 +134,47 @@ main(yargs
     })
     .option("w", {
       alias: "wid",
-      describe:  `SET Work Id`,
+      describe:  `Set Answer: Work Id`,
       type: "string"
     })
     .option("p", {
       alias: "pid",
-      describe:  `SET Process Id`,
+      describe:  `Set Answer: Process Id`,
       type: "string"
     })
     .option("z", {
       alias: "zone",
-      describe:  `SET Timezone`,
+      describe:  `Set Answer: Timezone`,
       type: "string"
     })
     .option("b", {
       alias: "begin",
-      describe:  `SET beginning date`,
+      describe:  `Set Answer: beginning date`,
       type: "string"
     })
     .option("e", {
       alias: "end",
-      describe:  `SET ending date`,
+      describe:  `Set Answer: ending date`,
       type: "string"
     })
     .option("f", {
       alias: "first",
-      describe:  `SET First Shift Start (military time)`,
+      describe:  `Set Answer: first shift start (military time)`,
       type: "string"
     })
     .option("l", {
       alias: "last",
-      describe:  `SET Last Shift Start (military time)`,
+      describe:  `Set Answer: last shift start (military time)`,
       type: "string"
     })
     .option("r", {
       alias: "record",
       describe: `Get a list of records`,
+      type: "boolean"
+    })
+    .option("y", {
+      alias: "yes",
+      describe: `Skip confirmation`,
       type: "boolean"
     })
     .help("h")

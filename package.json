@@ -8,7 +8,7 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "toggl-tuesday" : "lib/index.js"
+    "toggl-tuesday" : "./index.js"
   },
   "cmd":"node index.js",
   "keywords": [],
