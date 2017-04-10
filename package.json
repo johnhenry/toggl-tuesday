@@ -1,6 +1,6 @@
 {
   "name": "toggl-tuesday",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,9 +8,9 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "toggl-tuesday" : "./index.js"
+    "toggl-tuesday": "./index.js"
   },
-  "cmd":"node index.js",
+  "cmd": "node index.js",
   "keywords": [],
   "author": "",
   "license": "MIT",
