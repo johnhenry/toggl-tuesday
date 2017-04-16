@@ -1,6 +1,6 @@
 # toggl-tuesday
 
-Easily update your [Toggl](https://www.goggle.com) timesheet from the commandline. Unlike other tools, such as [toggl-clii](https://github.com/drobertadams/toggl-cli), this provides a wizard that allows one to bulk update over several dates. Toggl-tuesday will create two 4-hours shifts for a specified date range. Weekends are skipped by default.
+Easily update your [Toggl](https://www.goggle.com) timesheet from the commandline. Unlike other tools, such as [toggl-cli](https://github.com/drobertadams/toggl-cli), this is a wizard that allows one to bulk update over several dates. Toggl-tuesday will create two 4-hours shifts for a specified date range. Weekends are skipped by default.
 
 ## Pre-Requesites
 
@@ -27,11 +27,10 @@ OR
 toggl-tuesday -a <api key>
 ```
 
-
-Although it's not recommended, you can also use your username and password.
+Although not recommended, you can also use your toggl username and password.
 
 ```bash
-toggl-tuesday --username <user name> --password <password
+toggl-tuesday --username <user name> --password <password>
 ```
 
 ### Getting help
@@ -54,7 +53,7 @@ Once started, the wizard will ask you a number of questions. Press `Enter` witho
 
 #### Work Id
 
-Frankly, I'm not sure what this represents, the API needs this value to function properly. I've found the best way to get this value is to use the records flag to give you a list of previously entered records.
+Frankly, I'm not sure what this represents, the API needs this value to function properly. I've found the best way to get this value is to use the `--records` flag to give you a list of previously entered records.
 
 ```bash
 toggl-tuesday -a <api key> --records
@@ -70,7 +69,7 @@ Note: Skip by setting the --wid or -w flag.
 
 #### Process Id
 
-This identifies the project upon which you're working. As with the Work Id, this is most easily obtained by looking at previous records usint the `--records` flag.
+This identifies the project upon which you're working. As with the Work Id, this is most easily obtained by looking at previous records using the `--records` flag.
 
 Note: Skip by setting the --pid or -p flag.
 
@@ -88,7 +87,6 @@ This is the beginning date for your records it currently defaults to the current
 Be sure that the date is in the proper format: YYYY-MM-DD
 
 Note: Skip by setting the --begin or -b flag.
-
 
 #### What date will you end?
 
@@ -123,8 +121,8 @@ Lets say that:
   - I have a work id of 10000
   - I have a process id of 99999
   - I live on the east coast of the US (GMT -4)
-  - I plan to enter time starting on April 1st of 2017 (2017-04-01)
-  - I plan on ending on April 30th (2017-04-30)
+  - I plan to enter time starting on the 1st of April in 2017 (2017-04-01)
+  - I plan on ending on the 30th of April in 2017 (2017-04-30)
   - I plan on working my first four-hour shift starting at 7am (7 hours)
   - I plan on working my second four-hour shift starting at 1pm (13 hours)
 
@@ -145,11 +143,11 @@ What date will you begin? (2017-04-10)
 
 #### Test (--test, -t)
 
-You can use the test flag to preview changes without making them. If you provide the test flag, you won't need to provide credentials.
+You can use the test flag to preview changes without making them. If you provide the test flag, you won't need to provide authentication credentials.
 
 #### Weekends (--weekend, -k)
 
-You can use the weekend flag to ensure that weekends are NOT SKIPPED.
+You can use the weekend flag to ensure that WEEKENDS ARE NOT SKIPPED.
 
 #### Verbose (--verbose, -v)
 
@@ -157,8 +155,8 @@ You can use the verbose flag to get a bit more information out of the console.
 
 #### Silent (--silent, -s)
 
-You can use the silent flag to supress all output from the console.
-WARNING: ALL OUTPUT WILL BE SUPRESSED
+You can use the silent flag to suppress all output from the console.
+WARNING: ALL OUTPUT WILL BE SUPPRESSED
 
 #### Yes (--yes, -y)
 
